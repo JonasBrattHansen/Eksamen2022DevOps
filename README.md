@@ -1,3 +1,4 @@
+# DEL 2 - CI
 ## Oppgave 1
 I ci.yml filen er det lagt til: 
 ```
@@ -26,3 +27,8 @@ Dette må endres slik at branches bare går fra main til alle - som dette:
     branches:
       - '**'
 ```
+
+## Oppgave 3
+Det første sensor må gjøre er å gå på Settings i GitHub fra repositoriet sitt. Fra settings til branches og "add protection rule". Her kan man egentlig gjøre som man vil.
+Men det oppgaven spør om så må sensor gi name pattern, huke av "Require a pull request before merging", "require approvals (1 stk)", "Require status checks to pass before merging" og for å forhindre at noen pusher rett på main "Lock branch".
+Og ettersom oppgaven ikke spør om at jeg skal gjøre det på min - lar jeg være.
