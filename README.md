@@ -1,3 +1,10 @@
+# DEL 1 - DevOps-prinsipper
+* SPM 1 svar
+
+* Problemet med dette er at mye kode blir publisert samtidig og dermed hvis det er feil i koden vil denne gjemme seg godt inni alt dette. Ved å ha en hyppigere release med mindre funksjonalitet per release gjør det at hele prosessen kan gå smoothere og mer smertefritt. 
+Med kontoinuelig integrasjon, levereanse og deployment gir det bedriften mye mer kontroll over koden de releaser og gjør det mulig å release oftere og fortere. 
+
+
 # DEL 2 - CI
 ## Oppgave 1
 I ci.yml filen er det lagt til: 
