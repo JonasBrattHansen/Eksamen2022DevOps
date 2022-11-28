@@ -3,7 +3,8 @@
 # or something?
 name: CI pipeline
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   build:
