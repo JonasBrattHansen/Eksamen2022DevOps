@@ -41,4 +41,8 @@ Men det oppgaven spør om så må sensor gi name pattern, huke av "Require a pul
 Og ettersom oppgaven ikke spør om at jeg skal gjøre det på min - lar jeg være..
 
 # Del 3 - Docker
-Når GitHub Actions kjører Docker.yml feiler den pga brukernavn og passord ikke er oppgitt - noe som gir mening! For å fikse dette trenger github å få tak i dette. 
+## Oppgave 1
+Når GitHub Actions kjører Docker.yml feiler den pga brukernavn og passord ikke er oppgitt - noe som gir mening! For å fikse dette trenger github å få tak i dette. Da trenger den et brukernavn og 2n "token".
+I DockerHub kan du lage denne tokenen. Det gjøres ved å gå til DockerHub.Com - Settings - Security og der i fra lage et token (denne må tas vare på).
+Da du har token kan du gå til GitHub.com og repositoriet. Der går du til settings - secrets - og da lager 2 tokens. 1 til brukernavn og 1 med token fra DockerHub. Altså første vil være feks: "DOCKER_HUB_TOKEN" som navn og token fra DockerHub som "secret". Og den andre vil DOCKER_HUB_USERNAME være name og secret vil da være DockerHub brukernavnet ditt. Da burde workflowen funke fint :)
+
