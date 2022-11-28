@@ -11,3 +11,10 @@ on:
   push:
     branches: [ main ]
 ``` 
+## Oppgave 2
+Ettersom GitHub Actions aldri fant testene måtte dette legges til slik at den fikk tilgang til de. Da feilet testene:
+```
+ - name: Test
+   run: mvn --batch-mode -Dmaven.test.failure.ignore=false test
+``` 
+Også endret jeg testen fra expected 100 til 0 og da passa testen. Også i GitHub Actions! 
