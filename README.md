@@ -39,3 +39,6 @@ Dette må endres slik at branches bare går fra main til alle - som dette:
 Det første sensor må gjøre er å gå på Settings i GitHub fra repositoriet sitt. Fra settings til branches og "add protection rule". Her kan man egentlig gjøre som man vil.
 Men det oppgaven spør om så må sensor gi name pattern, huke av "Require a pull request before merging", "require approvals (1 stk)", "Require status checks to pass before merging" og for å forhindre at noen pusher rett på main "Lock branch".
 Og ettersom oppgaven ikke spør om at jeg skal gjøre det på min - lar jeg være..
+
+# Del 3 - Docker
+Når GitHub Actions kjører Docker.yml feiler den pga brukernavn og passord ikke er oppgitt - noe som gir mening! For å fikse dette trenger github å få tak i dette. 
