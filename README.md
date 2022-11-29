@@ -85,3 +85,20 @@ må endres til sensor sine detaljer og ikke mine private.
 
 # Del 4 - Metrics, overvåking og alarmer
 ## Oppgave 1
+
+Jeg la til en MetricsConfig.java klasse og satte cloudwatch.namespace til mitt kandidatnummer. Deretter gjorde jeg nødvendige rettninger i pom filen slik at det kjørte ordentlig. 
+Dette var å legge til blant annet 
+```
+<dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-cloudwatch2</artifactId>
+        </dependency>
+```
+og
+```
+  <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>utils</artifactId>
+            <version>${aws.sdk.version}</version>
+        </dependency>
+```
