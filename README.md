@@ -46,3 +46,11 @@ Når GitHub Actions kjører Docker.yml feiler den pga brukernavn og passord ikke
 I DockerHub kan du lage denne tokenen. Det gjøres ved å gå til DockerHub.Com - Settings - Security og der i fra lage et token (denne må tas vare på).
 Da du har token kan du gå til GitHub.com og repositoriet. Der går du til settings - secrets - og da lager 2 tokens. 1 til brukernavn og 1 med token fra DockerHub. Altså første vil være feks: "DOCKER_HUB_TOKEN" som navn og token fra DockerHub som "secret". Og den andre vil DOCKER_HUB_USERNAME være name og secret vil da være DockerHub brukernavnet ditt. Da burde workflowen funke fint :)
 
+## Oppgave 2
+For å få det til å kjøre må du endre DockerFile fra 
+```
+FROM adoptopenjdk/openjdk8
+COPY target/onlinestore-0.0.1-SNAPSHOT.jar /app/application.jar
+ENTRYPOINT ["java","-jar","/app/application.jar"]
+```
+til:
