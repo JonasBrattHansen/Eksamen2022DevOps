@@ -66,3 +66,22 @@ COPY --from=builder /app/target/*.jar /app/application.jar
 ENTRYPOINT ["java","-jar","/app/application.jar"]
 ```
 blir dette problemet fikset ettersom den nå bruker java versjon 11 som kompilerer med java runtime versjon 55.
+
+## Oppgave 3
+For at sensor skal få dette til å funke må han først sette opp AWS secret credentials likt som Docker Hub sine. De skal samme sted i GitHub bare med andre navn og "keys". AWS_ACCESS_KEY_ID og AWS_SECRET_ACCESS_KEY er navnene og verdiene må genereres i IAM i AWS. I IAM går til Users - søk etter brukernavnet og gå inn på det. Derretter går du til Security credentials og lager de :) 
+Så går sensor til ECR i AWS og lager et repository. Når det er laget kommer det øverst "view push commands" og da kan sensor bare følge disse for å få laget og pushet et private image. 
+Før dette kan gjøres må docker.yml filen også fikses slik at den er tilpasset sensor sin.
+```
+        run:
+          aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
+          rev=$(git rev-parse --short HEAD)
+          docker build . -t eksamen
+          docker tag eksamen 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
+          docker tag eksamen 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
+``` 
+må endres til sensor sine detaljer og ikke mine private. 
+
+# Del 4 - Metrics, overvåking og alarmer
+## Oppgave 1

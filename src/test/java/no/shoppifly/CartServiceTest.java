@@ -1,3 +1,4 @@
+/*
 package no.shoppifly;
 
 import org.junit.jupiter.api.Test;
@@ -21,3 +22,4 @@ public class CartServiceTest {
     }
 
 }
+   "sletter testen ettersom del 4 oppgave 1 sa det var ok"*/
