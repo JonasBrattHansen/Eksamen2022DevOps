@@ -54,3 +54,15 @@ COPY target/onlinestore-0.0.1-SNAPSHOT.jar /app/application.jar
 ENTRYPOINT ["java","-jar","/app/application.jar"]
 ```
 til:
+```
+FROM maven:3.6-jdk-11 as builder
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn package
+
+FROM adoptopenjdk/openjdk11:alpine-slim
+COPY --from=builder /app/target/*.jar /app/application.jar
+ENTRYPOINT ["java","-jar","/app/application.jar"]
+```
+blir dette problemet fikset ettersom den nå bruker java versjon 11 som kompilerer med java runtime versjon 55.
