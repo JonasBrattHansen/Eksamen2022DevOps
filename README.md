@@ -75,13 +75,13 @@ Før dette kan gjøres må docker.yml filen også fikses slik at den er tilpasse
         run:
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
-          docker build . -t eksamen
-          docker tag eksamen 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
-          docker tag eksamen 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
+          docker build . -t ${{ github.sha }}
+          docker tag ${{ github.sha }}  244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
 ``` 
-må endres til sensor sine detaljer og ikke mine private. 
+må endres til sensor sine detaljer og ikke mine private.
+
+Og for å få docker workflow til å pushe et container image med en tag som er lik GitHub commit hash(id) må det legges til ${{ github.sha }} i taggen :)
 
 # Del 4 - Metrics, overvåking og alarmer
 ## Oppgave 1
