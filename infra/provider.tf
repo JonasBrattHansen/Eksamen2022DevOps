@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "pgr301-2021-terraform-state"
+    bucket = "1029_terraform_bucket"
     key    = "glenn.richard.bech/apprunner-a-new-state.state"
     region = "eu-north-1"
   }
