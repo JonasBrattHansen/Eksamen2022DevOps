@@ -2,20 +2,12 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.33.0"
+      version = "4.39.0"
     }
   }
-}
-
-resource "aws_s3_bucket" "1029_mybucket" {
-  bucket = var.bucket_name
-}
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.1029_mybucket.bucket
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm     = "AES256"
-    }
+  backend "s3" {
+    bucket = "pgr301-2021-terraform-state"
+    key    = "glenn.richard.bech/apprunner-a-new-state.state"
+    region = "eu-north-1"
   }
 }
