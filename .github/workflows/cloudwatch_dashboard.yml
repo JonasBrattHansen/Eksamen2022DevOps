@@ -39,4 +39,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="candidate_id=1029" -var="image=image=244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest" -auto-approve
+        run: terraform apply -var="candidate_id=1029" -var="image=244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest" -auto-approve
