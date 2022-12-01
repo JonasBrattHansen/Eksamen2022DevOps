@@ -7,12 +7,8 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "1029" {
-  bucket = var.bucket_name
-}
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.1029.bucket
+  bucket = aws_s3_bucket.analytics-${var.candidate_id}.bucket
   rule {
     apply_server_side_encryption_by_default {
       sse_algorithm     = "AES256"
