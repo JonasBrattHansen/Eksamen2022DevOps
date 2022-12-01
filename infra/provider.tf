@@ -5,9 +5,6 @@ terraform {
       version = "4.39.0"
     }
   }
-  provider "aws" {
-    region     = "eu-west-1"
-  }
 
   backend "s3" {
     bucket = "1029"
