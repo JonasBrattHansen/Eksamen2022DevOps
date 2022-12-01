@@ -2,7 +2,7 @@ variable "candidate_id" {
   type = string
 }
 
-variable "image"  {
+variable "candidate_email"  {
   type = string
 }
 
