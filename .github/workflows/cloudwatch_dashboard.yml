@@ -39,4 +39,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="candidate_id=$1029" -var="candidate_email=$joha062@kristiania.no" -auto-approve
+        run: terraform apply -var="candidate_id=1029" -var="candidate_email=joha062@kristiania.no" -auto-approve
