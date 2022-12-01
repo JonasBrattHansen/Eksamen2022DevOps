@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
       bucket = "analyticsbucket"
       key    = "analyticsbucket.state"
-      region = "eu-west-1"
+      region = "eu-north-1"
   }
 }
 
