@@ -17,9 +17,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: eu-west-1
       CANDIDATE_ID: 1029
-      CANDIDATE_EMAIL: jaha062@kristiania.no
-      IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
-      PREFIX: joha062
+      CANDIDATE_EMAIL: joha062@kristiania.no
 
     steps:
       - uses: actions/checkout@v3
