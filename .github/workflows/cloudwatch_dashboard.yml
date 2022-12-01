@@ -38,7 +38,7 @@ jobs:
 
       - name: Terraform Destroy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform destroy
+        run: terraform destroy -var="candidate_id=$CANDIDATE_ID" -var="candidate_email=$CANDIDATE_EMAIL"  -auto-approve
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
