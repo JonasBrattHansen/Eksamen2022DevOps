@@ -88,6 +88,7 @@ Og for å få docker workflow til å pushe et container image med en tag som er 
 
 Jeg la til en MetricsConfig.java klasse og satte cloudwatch.namespace til mitt kandidatnummer. Deretter gjorde jeg nødvendige rettninger i pom filen slik at det kjørte ordentlig. 
 Dette var å legge til blant annet 
+
 ```
 <dependency>
             <groupId>io.micrometer</groupId>
