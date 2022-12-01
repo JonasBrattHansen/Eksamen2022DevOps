@@ -1,7 +1,11 @@
 package no.shoppifly;
 
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Component
@@ -41,4 +45,5 @@ class NaiveCartImpl implements CartService {
                         .map(i -> i.getUnitPrice() * i.getQty()))
                 .reduce(0f, Float::sum);
     }
+
 }
