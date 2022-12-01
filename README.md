@@ -102,3 +102,8 @@ og
             <version>${aws.sdk.version}</version>
         </dependency>
 ```
+
+# Del 5 - Terraform og CloudWatch Daashboards
+## Oppgave 1
+Svar her:
+
