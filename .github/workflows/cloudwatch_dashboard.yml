@@ -30,7 +30,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -var="candidate_id=1029" -candidate_email="joha062@kristiania.no" -no-color
+        run: terraform plan -var="candidate_id=1029" -var="image="joha062@kristiania.no" -no-color
         continue-on-error: true
 
       - name: Terraform Plan Status
@@ -39,4 +39,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="candidate_id=1029" -var="candidate_email=joha062@kristiania.no" -auto-approve -input=false
+        run: terraform apply -var="candidate_id=1029" -var="image=image=244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest" -auto-approve
