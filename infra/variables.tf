@@ -1,8 +1,8 @@
-variable "1029" {
+variable "candidate_id" {
   type = string
 }
 
-variable "jonas96hansen@hotmail.com"  {
+variable "candidate_email"  {
   type = string
 }
 
