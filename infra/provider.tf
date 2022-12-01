@@ -11,13 +11,10 @@ resource "aws_s3_bucket" "analyticsbucket" {
   bucket = "analytics-${var.candidate_id}"
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.analyticsbucket.bucket
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm     = "AES256"
-    }
-  }
+backend "s3" {
+    bucket = "analyticsbucket"
+    key    = "analyticsbucket.state"
+    region = "eu-north-1"
 }
 
 variable "bucket_name" {
