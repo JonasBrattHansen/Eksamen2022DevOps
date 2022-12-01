@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "1029_terraform_bucket"
-    key    = "glenn.richard.bech/apprunner-a-new-state.state"
+    key    = "joha062/apprunner-a-new-state.state"
     region = "eu-north-1"
   }
 }
