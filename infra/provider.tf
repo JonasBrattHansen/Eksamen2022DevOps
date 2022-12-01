@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+resource "aws_s3_bucket" "analyticsbucket" {
+  bucket = "analytics-${var.candidate_id}"
+}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
   bucket = aws_s3_bucket.analyticsbucket.bucket
   rule {
