@@ -17,11 +17,9 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run:
+        run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
-          docker build . -t "$TAG" -t "$LATEST" --build-arg VERSION="$VERSION" --build-arg BUILD_TIMESTAMP="$BUILD_TIMESTAMP"
-          docker tag "$TAG" -t "$LATEST" --build-arg VERSION="$VERSION" --build-arg BUILD_TIMESTAMP="$BUILD_TIMESTAMP" 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
-          docker tag "$TAG" -t "$LATEST" --build-arg VERSION="$VERSION" --build-arg BUILD_TIMESTAMP="$BUILD_TIMESTAMP" 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
+          docker build . -t 1029_exam
+          docker tag 1029_exam  244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
-          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
