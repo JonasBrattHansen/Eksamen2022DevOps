@@ -8,6 +8,6 @@ terraform {
   backend "s3" {
     bucket = "1029"
     key    = "joha062/apprunner-a-new-state.state"
-    region = "eu-north-1"
+    region = "eu-east-2"
   }
 }
