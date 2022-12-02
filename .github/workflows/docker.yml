@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build and push Docker image
         env:
@@ -23,3 +23,36 @@ jobs:
           docker build . -t ${{ github.sha }}
           docker tag ${{ github.sha }}  244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
+          
+  terraform:
+    name: "Terraform"
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: eu-west-1
+      IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
+      CANDIDATE_ID: 1029
+      CANDIDATE_EMAIL: joha062@kristiania.no
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan   -var="candidate_id=$CANDIDATE_ID" -var="candidate_email=$CANDIDATE_EMAIL" -var="image=$IMAGE"  -no-color
+        continue-on-error: true
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -var="candidate_id=$CANDIDATE_ID" -var="candidate_email=$CANDIDATE_EMAIL" -var="image=$IMAGE"  -auto-approve
