@@ -110,3 +110,6 @@ og
 
 ## Oppgave 2
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
+
+## Alarmer
+Ettersom jeg dessverre ikke fikk til tidligere oppgaver som gikk ut på å få inn data - vil dermed ikke alarmen funke. Men jeg har laget den og den ville ha funket dersom de tidligere oppgavene hadde funket. 
