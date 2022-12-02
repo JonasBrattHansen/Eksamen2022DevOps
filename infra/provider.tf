@@ -12,7 +12,6 @@ terraform {
       key    = "analytics-1029.state"
       region = "eu-west-1"
   }
-
 }
 
 
