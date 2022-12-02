@@ -16,7 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
 }
 
 resource "aws_sns_topic" "user_updates" {
-  name = var.student_name
+  name = var.candidate_id
 }
 
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
