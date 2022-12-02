@@ -106,5 +106,5 @@ og
 
 # Del 5 - Terraform og CloudWatch Daashboards
 ## Oppgave 1
-Svar her:
+* Den kjører første gangen ettersom bucketen ikke eksisterer - men kjører du github actions 2. gang så vil den feile ettersom den allerede finnes - og i AWS må alle bucket navn være globalt unike - noe den lenger ikke er. 
 
