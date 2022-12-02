@@ -108,3 +108,5 @@ og
 ## Oppgave 1
 * Den kjører første gangen ettersom bucketen ikke eksisterer - men kjører du github actions 2. gang så vil den feile ettersom den allerede finnes - og i AWS må alle bucket navn være globalt unike - noe den lenger ikke er. 
 
+## Oppgave 2
+* if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
