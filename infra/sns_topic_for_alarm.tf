@@ -2,12 +2,6 @@ resource "aws_sns_topic" "alarms" {
   name = "alarm-topic-${var.candidate_id}"
 }
 
-resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
-  topic_arn = aws_sns_topic.user_updates.arn
-  protocol  = "email"
-  endpoint  = var.candidate_email
-}
-
 resource "aws_cloudwatch_metric_alarm" "zerosum" {
   alarm_name                = "carts-over-5-1029"
   namespace                 = "joha062"
@@ -23,4 +17,14 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
   alarm_description         = "This alarm goes off if number of carts over three repeatedly periods on 5 minutes exceeds 5 "
   insufficient_data_actions = []
   alarm_actions       = [aws_sns_topic.user_updates.arn]
+}
+
+resource "aws_sns_topic" "user_updates" {
+  name = var.candidate_id
+}
+
+resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
+  topic_arn = aws_sns_topic.user_updates.arn
+  protocol  = "email"
+  endpoint  = "joha062@student.kristiania.no"
 }
