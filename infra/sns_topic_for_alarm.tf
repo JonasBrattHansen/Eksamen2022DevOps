@@ -3,7 +3,7 @@ resource "aws_sns_topic" "alarms" {
 }
 
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
-  topic_arn = aws_sns_topic.alarms.arn
+  topic_arn = aws_sns_topic.user_updates.arn
   protocol  = "email"
   endpoint  = var.candidate_email
 }
@@ -20,7 +20,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
 
   statistic                 = "Maximum"
 
-  alarm_description         = "This alarm goes off if number of carts over three repetedly periods on 5 minutes exceeds 5 "
+  alarm_description         = "This alarm goes off if number of carts over three repeatedly periods on 5 minutes exceeds 5 "
   insufficient_data_actions = []
   alarm_actions       = [aws_sns_topic.user_updates.arn]
 }
