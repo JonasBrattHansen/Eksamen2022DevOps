@@ -6,9 +6,9 @@ resource "aws_cloudwatch_dashboard" "main" {
   "widgets": [
     {
       "type": "metric",
-      "x": 2,
+      "x": 1,
       "y": 0,
-      "width": 12,
+      "width": 10,
       "height": 6,
       "properties": {
         "metrics": [
@@ -27,7 +27,7 @@ resource "aws_cloudwatch_dashboard" "main" {
           "type": "metric",
           "x": 10,
           "y": 0,
-          "width": 12,
+          "width": 10,
           "height": 6,
           "properties": {
             "metrics": [
@@ -41,7 +41,46 @@ resource "aws_cloudwatch_dashboard" "main" {
             "region": "eu-west-1",
             "title": "Total sum money in carts"
           }
-        }
+        },
+        {
+                  "type": "metric",
+                  "x": 1,
+                  "y": 10,
+                  "width": 10,
+                  "height": 6,
+                  "properties": {
+                    "metrics": [
+                      [
+                        "${var.candidate_id}",
+                        "checkouts.value"
+                      ]
+                    ],
+                    "period": 300,
+                    "stat": "Maximum",
+                    "region": "eu-west-1",
+                    "title": "Total checkouts"
+                  }
+                },
+                {
+                                  "type": "metric",
+                                  "x": 10,
+                                  "y": 10,
+                                  "width": 10,
+                                  "height": 6,
+                                  "properties": {
+                                    "metrics": [
+                                      [
+                                        "${var.candidate_id}",
+                                        "checkouts.value"
+                                      ]
+                                    ],
+                                    "period": 300,
+                                    "stat": "Maximum",
+                                    "region": "eu-west-1",
+                                    "title": "Total checkouts"
+                                  }
+                                }
+
   ]
 
 
