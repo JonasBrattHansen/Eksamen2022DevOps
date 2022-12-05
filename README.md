@@ -1,8 +1,13 @@
 # DEL 1 - DevOps-prinsipper
-* SPM 1 svar
-
-* Problemet med dette er at mye kode blir publisert samtidig og dermed hvis det er feil i koden vil denne gjemme seg godt inni alt dette. Ved å ha en hyppigere release med mindre funksjonalitet per release gjør det at hele prosessen kan gå smoothere og mer smertefritt. 
+(Oppgavene blir besvart i samme tekst)
+* Utfordringene med dagens systemutviklingsprosess er nesten alt. De gjør alt halvferdig og får egentlig aldri noen god flyt i det de gjør. De velger å hoppe over operasjoner som gjør andre operasjoner lettere senere. De har dårlig flyt ettersom de aldri får github actions til å fungere. Feedback har de også generelt ingenting av - annet enn 1 lokal test. De her ingen overvåkning, metrics, logger, responstider, grafer eller lignende - det er veldig viktig for en bedrift å få innsikt og tilbakemeldigner på hvordan og (om i det hele tatt) ting funker i systemene deres.   
+Kontinuelig forbedring er her vi kommer inn ;) fikse problemene slik at de kan holde seg "friske" - det beste er å lage systemer med et godt immunforsvar slik at de kan forsvare seg selv uten for mye menneskelig hjelp. Et godt immunforsvar lærer av sine feil og klarer da og utvikle seg til å ikke bli "syk" av den samme feilen igjen - dette er veldig relevant for IT bedrifter.
+Slik de driver med utvikling nå blir systemene bare dårligere og dårligere og ikke bedre og bedre (slik det burde være)
+Deres vanlige respons på mange feil er å release mindre hyppig og dermed heller publisere mye kode samtidig og dermed hvis det er feil i koden vil denne gjemme seg godt inni alt dette. Ved å ha en hyppigere release med mindre funksjonalitet per release gjør det at hele prosessen kan gå smoothere og mer smertefritt - det vil dukke opp feil ja men disse vil være nokså enkle å fikse ettersom det kun er èn liten funksjonalitet.
 Med kontoinuelig integrasjon, levereanse og deployment gir det bedriften mye mer kontroll over koden de releaser og gjør det mulig å release oftere og fortere. 
+Som det også står så overleverer teamet koden til en drift avdeling som da får ansvaret av å drifte koden - dette kan skape mange problemer ettersom de hele tiden vil få tildelt ny kode - og denne koden er ikke alltid bra og enkel å forstå. Det vil ta mye tid å sette seg inn i all koden - og for alt jeg vet gir de ikke feedback tilbake til utviklingsteamet på hva som kunne vært gjoprt bedre og lignende. 
+Å ha ett team som er avsvarlig for både utvikling og drift skaper en bedre flyt, en bedre kontinuelig utvikling og de kommer til å få mye bedre kontroll på sin kode og hva den gjør + hva som er dårlig/bra. Siden de allerede har laget koden er det lite å sette seg inn i sånn sett men de får da litt ekstra arbeid ved å drifte den men det vil nok ikke være et problem - dette vil også gi bedriften mindre teknisk gjeld. 
+Hyppig realse av kode kan også gi problemer. Det kan komme mange forskjellige småproblemer ut i systemet, det krever mer tid og resursser. Men igjen alt dette kan fikses eller forbedres på en eller annen måte. Med god feedback - feks fra github actions - kan det være med på å redusere alle disse småfeilene og dermed gjøre at det ikke blir så ille alikevel.  
 
 
 # DEL 2 - CI
@@ -107,6 +112,8 @@ og
 # Del 5 - Terraform og CloudWatch Daashboards
 ## Oppgave 1
 * Den kjører første gangen ettersom bucketen ikke eksisterer - men kjører du github actions 2. gang så vil den feile ettersom den allerede finnes - og i AWS må alle bucket navn være globalt unike - noe den lenger ikke er. 
+Terraform apply gjør basically det den blir fortalt til å gjøre - og du prøver jo å lage en ny bucket med samme navn - og som sagt går ikke dette.
+Men etter utallinge push requests og googling i flere dager fant jeg en fix i workflowen som løste problemet. 
 
 ## Oppgave 2
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
