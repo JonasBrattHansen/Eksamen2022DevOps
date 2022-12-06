@@ -121,4 +121,4 @@ Men etter utallinge push requests og googling i flere dager fant jeg en fix i wo
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
 
 ## Alarmer og oppgave 3 (Dashboard)
-Har prøvd å få  alarmen til å fungere men den ville ikke ta inn dataen fra carts_counter - og dessverre vet jeg ikke hvorfor
+Alarmen kjører også som den skal. Den går over 5 på grafen også tar det ca 15-20 sekunder før alarmen går. Om dette er meningen eller ikke vet jeg ikke. 
