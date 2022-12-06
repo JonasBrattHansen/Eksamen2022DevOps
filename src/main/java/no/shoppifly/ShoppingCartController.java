@@ -4,6 +4,7 @@ import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController()
-public class ShoppingCartController {
+public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
     private final CartService cartService;
@@ -60,20 +61,13 @@ public class ShoppingCartController {
         return cartService.getAllsCarts();
     }
 
-/*
-    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
 
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         // Verdi av total
         Gauge.builder("carts_count", shoppingCarts,
                 b -> b.values().size()).register(meterRegistry);
+    }
 
-        Gauge.builder("carts_sum", shoppingCarts,
-                        b -> b.values()
-                                .stream()
-                                .map(Cart::getId)
-                                .map(String::)
-                                .sum())
-                .register(meterRegistry);
-    }*/
 
 }

@@ -3,9 +3,7 @@
 # or something?
 name: CI pipeline
 on:
-  push:
-    branches:
-      - '**'
+  push: []
 
 jobs:
   build:
