@@ -121,5 +121,4 @@ Men etter utallinge push requests og googling i flere dager fant jeg en fix i wo
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
 
 ## Alarmer og oppgave 3 (Dashboard)
-Ettersom jeg dessverre ikke fikk til tidligere oppgaver som gikk ut på å få inn data - vil dermed ikke alarmen funke. Men jeg har laget den og den ville ha funket dersom de tidligere oppgavene hadde funket. 
-Men jeg har laget dashboardet og fått det ordentlig på plass - så hvis jeg hadde fått til den andre oppgaven ville dashboardet vært ok. 
+Har prøvd å få alarmen til å fungere men den ville ikke ta inn dataen fra carts_counter - og dessverre vet jeg ikke hvorfor
