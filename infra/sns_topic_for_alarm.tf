@@ -16,7 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
 
   alarm_description         = "This alarm goes off if number of carts over three repeatedly periods on 5 minutes exceeds 5 "
   insufficient_data_actions = []
-  alarm_actions       = [arn:aws:sns:eu-west-1:244530008913:alarm-topic-1029]
+  alarm_actions       = [topic_arn]
 }
 
 resource "aws_sns_topic" "user_updates" {
