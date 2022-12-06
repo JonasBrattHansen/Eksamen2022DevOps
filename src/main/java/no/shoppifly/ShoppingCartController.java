@@ -7,7 +7,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +14,17 @@ import java.util.Map;
 @RestController()
 public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
 
-    @Autowired
-    private final CartService cartService;
+
     private MeterRegistry meterRegistry;
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
+
+    @Autowired
+    public ShoppingCartController(MeterRegistry meterRegistry, CartService cartService) {
+        this.meterRegistry = meterRegistry;
+        this.cartService = cartService;
+    }
+
+    private final CartService cartService;
 
 
     public ShoppingCartController(CartService cartService) {
@@ -62,7 +68,7 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
     }
 
 
-    @Override
+
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         // Verdi av total
         Gauge.builder("carts_count", shoppingCarts,
