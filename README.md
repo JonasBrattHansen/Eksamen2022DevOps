@@ -77,12 +77,14 @@ For at sensor skal få dette til å funke må han først sette opp AWS secret cr
 Så går sensor til ECR i AWS og lager et repository. Når det er laget kommer det øverst "view push commands" og da kan sensor bare følge disse for å få laget og pushet et private image. 
 Før dette kan gjøres må docker.yml filen også fikses slik at den er tilpasset sensor sin.
 ```
-        run:
+        run: |
           aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 244530008913.dkr.ecr.eu-west-1.amazonaws.com
           rev=$(git rev-parse --short HEAD)
           docker build . -t ${{ github.sha }}
           docker tag ${{ github.sha }}  244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
+           docker tag ${{ github.sha }} 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:$rev
+          docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/1029:latest
 ``` 
 må endres til sensor sine detaljer og ikke mine private.
 
