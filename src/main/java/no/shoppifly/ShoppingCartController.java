@@ -12,11 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController()
-public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
+public class ShoppingCartController {
 
+    private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
     private MeterRegistry meterRegistry;
-    private final Map<String, Cart> shoppingCarts = new HashMap<>();
+   // private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
     @Autowired
     public ShoppingCartController(MeterRegistry meterRegistry, CartService cartService) {
@@ -27,9 +28,6 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
     private final CartService cartService;
 
 
-    public ShoppingCartController(CartService cartService) {
-        this.cartService = cartService;
-    }
 
     @GetMapping(path = "/cart/{id}")
     public Cart getCart(@PathVariable String id) {
@@ -65,14 +63,6 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
     @GetMapping(path = "/carts")
     public List<String> getAllCarts() {
         return cartService.getAllsCarts();
-    }
-
-
-
-    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        // Verdi av total
-        Gauge.builder("carts_count", shoppingCarts,
-                b -> b.values().size()).register(meterRegistry);
     }
 
 
