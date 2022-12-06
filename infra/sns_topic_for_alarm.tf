@@ -24,7 +24,7 @@ resource "aws_sns_topic" "user_updates" {
 }
 
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
-  topic_arn = arn:aws:sns:eu-west-1:244530008913:alarm-topic-1029
+  topic_arn = aws_sns_topic.user_updates.arn
   protocol  = "email"
   endpoint  = "joha062@student.kristiania.no"
 }
