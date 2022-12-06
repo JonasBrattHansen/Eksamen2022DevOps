@@ -52,9 +52,6 @@ class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReady
         // Verdi av total
         Gauge.builder("carts_count", shoppingCarts,
                 Map::size).register(meterRegistry);
-
-        Gauge.builder("carts_counter", shoppingCarts,
-                Map::size).register(meterRegistry);
     }
 
 
