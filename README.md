@@ -122,3 +122,4 @@ Men etter utallinge push requests og googling i flere dager fant jeg en fix i wo
 
 ## Alarmer og oppgave 3 (Dashboard)
 Alarmen kjører også som den skal. Den går over 5 på grafen også tar det ca 15-20 sekunder før alarmen går. Om dette er meningen eller ikke vet jeg ikke. 
+Det står også "Pending confirmation" selvom jeg har bekreftet det i topics.. jeg får mail når alarmen utløses. 
