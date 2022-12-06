@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
   comparison_operator       = "GreaterThanThreshold"
   threshold                 = "5"
   evaluation_periods        = "3"
-  period                    = "60"
+  period                    = "0"
 
   statistic                 = "Maximum"
 
@@ -24,7 +24,7 @@ resource "aws_sns_topic" "user_updates" {
 }
 
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
-  topic_arn = aws_sns_topic.user_updates.arn
+  topic_arn = arn:aws:sns:eu-west-1:244530008913:alarm-topic-1029
   protocol  = "email"
   endpoint  = "joha062@student.kristiania.no"
 }
