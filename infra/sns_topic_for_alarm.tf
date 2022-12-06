@@ -13,6 +13,7 @@ resource "aws_cloudwatch_metric_alarm" "zerosum" {
   period                    = "300"
 
   statistic                 = "Maximum"
+  unit                      = "Count"
 
   alarm_description         = "This alarm goes off if number of carts over three repeatedly periods on 5 minutes exceeds 5 "
   insufficient_data_actions = []
