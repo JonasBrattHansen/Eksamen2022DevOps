@@ -54,6 +54,7 @@ class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReady
                 b -> b.values().size()).register(meterRegistry);
     }
 
+
     @Autowired
     public NaiveCartImpl(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
