@@ -1,5 +1,5 @@
 # DEL 1 - DevOps-prinsipper
-(Oppgavene blir besvart i samme tekst)
+(Oppgavene blir besvart i samme tekst) 
 * Utfordringene med dagens systemutviklingsprosess er nesten alt. De gjør alt halvferdig og får egentlig aldri noen god flyt i det de gjør. De velger å hoppe over operasjoner som gjør andre operasjoner lettere senere. De har dårlig flyt ettersom de aldri får github actions til å fungere. Feedback har de også generelt ingenting av - annet enn 1 lokal test. De her ingen overvåkning, metrics, logger, responstider, grafer eller lignende - det er veldig viktig for en bedrift å få innsikt og tilbakemeldigner på hvordan og (om i det hele tatt) ting funker i systemene deres.   
 Kontinuelig forbedring er her vi kommer inn ;) fikse problemene slik at de kan holde seg "friske" - det beste er å lage systemer med et godt immunforsvar slik at de kan forsvare seg selv uten for mye menneskelig hjelp. Et godt immunforsvar lærer av sine feil og klarer da og utvikle seg til å ikke bli "syk" av den samme feilen igjen - dette er veldig relevant for IT bedrifter.
 Slik de driver med utvikling nå blir systemene bare dårligere og dårligere og ikke bedre og bedre (slik det burde være)
