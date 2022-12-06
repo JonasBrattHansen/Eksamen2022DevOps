@@ -4,7 +4,7 @@ resource "aws_sns_topic" "alarms" {
 
 resource "aws_cloudwatch_metric_alarm" "zerosum" {
   alarm_name                = "carts-over-5-1029"
-  namespace                 = "joha062"
+  namespace                 = "1029"
   metric_name               = "carts_counter.value"
 
   comparison_operator       = "GreaterThanThreshold"
