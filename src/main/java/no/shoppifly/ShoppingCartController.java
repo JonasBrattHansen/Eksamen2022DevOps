@@ -40,6 +40,7 @@ public class ShoppingCartController {
      */
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
+        meterRegistry.counter("checkouts", checkout(cart));
         return cartService.checkout(cart);
     }
 

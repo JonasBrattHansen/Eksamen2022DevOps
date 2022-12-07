@@ -62,6 +62,7 @@ class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReady
                                 .mapToDouble(Float::doubleValue)
                                 .sum())
                 .register(meterRegistry);
+
     }
 
 
