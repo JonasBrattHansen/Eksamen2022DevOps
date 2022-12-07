@@ -12,7 +12,7 @@ import java.util.*;
 
 
 @Component
-class NaiveCartImpl implements CartService {
+class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReadyEvent> {
 
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
@@ -49,4 +49,25 @@ class NaiveCartImpl implements CartService {
                 .reduce(0f, Float::sum);
     }
 
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+        // Verdi av total
+        Gauge.builder("carts_count", shoppingCarts,
+                Map::size).register(meterRegistry);
+
+       Gauge.builder("carts_value", shoppingCarts,
+                        b -> b.values()
+                                .stream()
+                                .flatMap(c -> c.getItems().stream()
+                                        .map(i -> i.getQty() * i.getUnitPrice()))
+                                .mapToDouble(Float::doubleValue)
+                                .sum())
+                .register(meterRegistry);
+    }
+
+
+    @Autowired
+    public NaiveCartImpl(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+    }
+    private final MeterRegistry meterRegistry;
 }
