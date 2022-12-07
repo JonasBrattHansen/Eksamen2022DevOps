@@ -7,7 +7,10 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+
+import java.math.BigDecimal;
 import java.util.*;
+
 
 @Component
 class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReadyEvent> {
@@ -51,6 +54,14 @@ class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReady
         // Verdi av total
         Gauge.builder("carts_count", shoppingCarts,
                 Map::size).register(meterRegistry);
+
+        Gauge.builder("carts_value", shoppingCarts,
+                        b -> b.values()
+                                .stream()
+                                .map(Item::getTotalInCart)
+                                .mapToDouble(Float::doubleValue)
+                                .sum())
+                .register(meterRegistry);
     }
 
 
