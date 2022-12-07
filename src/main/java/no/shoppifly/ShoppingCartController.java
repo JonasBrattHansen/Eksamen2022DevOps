@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController()
-public class ShoppingCartController {
+public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent>{
 
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
@@ -63,6 +63,22 @@ public class ShoppingCartController {
     public List<String> getAllCarts() {
         return cartService.getAllsCarts();
     }
+
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+        // Verdi av total
+        Gauge.builder("carts_count", shoppingCarts,
+                Map::size).register(meterRegistry);
+
+        Gauge.builder("carts_value", shoppingCarts,
+                        b -> b.values()
+                                .stream()
+                                .flatMap(c -> c.getItems().stream()
+                                        .map(i -> i.getQty() * i.getUnitPrice()))
+                                .mapToDouble(Float::doubleValue)
+                                .sum())
+                .register(meterRegistry);
+    }
+
 
 
 }
