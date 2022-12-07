@@ -1,5 +1,6 @@
 package no.shoppifly;
 
+import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ class NaiveCartImpl implements CartService, ApplicationListener<ApplicationReady
 
     @Override
     public String checkout(Cart cart) {
-        meterRegistry.counter("checkouts").increment();
+        Counter successfulTasksCounter = meterRegistry.counter("checkouts");
+        successfulTasksCounter.increment();
         shoppingCarts.remove(cart.getId());
         return UUID.randomUUID().toString();
     }
