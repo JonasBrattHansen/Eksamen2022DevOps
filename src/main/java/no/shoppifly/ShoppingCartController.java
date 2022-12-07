@@ -3,6 +3,7 @@ package no.shoppifly;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -43,6 +44,8 @@ public class ShoppingCartController {
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
         return cartService.checkout(cart);
+
+
     }
 
     /**
