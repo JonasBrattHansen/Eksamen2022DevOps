@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController()
-public class ShoppingCartController {
+public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
 
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
@@ -66,4 +66,8 @@ public class ShoppingCartController {
     }
 
 
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+
+    }
 }
