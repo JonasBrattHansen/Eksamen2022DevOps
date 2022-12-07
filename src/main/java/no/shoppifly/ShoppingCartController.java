@@ -1,5 +1,6 @@
 package no.shoppifly;
 
+import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ public class ShoppingCartController {
 
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
-        meterRegistry.counter("checkouts").increment();
+        Counter counter = Counter.builder("checkouts").register(meterRegistry);
+        counter.increment();
         return cartService.checkout(cart);
     }
 
