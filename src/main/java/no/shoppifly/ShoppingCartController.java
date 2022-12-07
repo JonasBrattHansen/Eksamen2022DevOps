@@ -42,8 +42,6 @@ public class ShoppingCartController {
 
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
-        Counter counter = Counter.builder("checkouts").register(meterRegistry);
-        counter.increment();
         return cartService.checkout(cart);
     }
 
