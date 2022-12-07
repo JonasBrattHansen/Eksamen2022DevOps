@@ -17,7 +17,6 @@ public class ShoppingCartController {
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
     private MeterRegistry meterRegistry;
-   // private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
     @Autowired
     public ShoppingCartController(MeterRegistry meterRegistry, CartService cartService) {
