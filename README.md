@@ -119,6 +119,9 @@ Men etter utallinge push requests og googling i flere dager fant jeg en fix i wo
 ## Oppgave 2
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
 
+## Oppgave 3
+Når det kommer til gjennomsnitlig responstid for checkout metoden så fikk jeg ikke det til å fungere slik jeg ville. Jeg prøvde å lage en "Timer" som startet før selve return statementen og avslutte den etter - men det bare feilet. Men jeg har satt opp dashboardet slik at det ville ha funket med "checkout_latency.avg" i namespacet hvis koden var der :)
+
 ## Alarmer og oppgave 3 (Dashboard)
 Alarmen kjører også som den skal. Den går over 5 på grafen også tar det ca 15-20 sekunder før alarmen går. Om dette er meningen eller ikke vet jeg ikke. 
 Det står også "Pending confirmation" selvom jeg har bekreftet det i topics.. jeg får mail når alarmen utløses. 
