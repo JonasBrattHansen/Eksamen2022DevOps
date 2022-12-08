@@ -55,7 +55,7 @@ resource "aws_cloudwatch_dashboard" "main" {
                         "checkouts.count"
                       ]
                     ],
-                    "period": 3600,
+                    "period": 900,
                     "stat": "Sum",
                     "region": "eu-west-1",
                     "title": "Total checkouts"
