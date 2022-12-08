@@ -14,7 +14,6 @@ Hyppig realse av kode kan også gi problemer. Det kan komme mange forskjellige s
 ## Oppgave 1
 I ci.yml filen er det lagt til: 
 ```
-name: CI pipeline
 on:
   workflow_dispatch:
 ``` 
