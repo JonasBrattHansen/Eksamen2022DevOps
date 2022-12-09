@@ -7,8 +7,3 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example4exam" {
     }
   }
 }
-
-variable "bucket_name" {
-  type = string
-  default = "analytics-1029"
-}
