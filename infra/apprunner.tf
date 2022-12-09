@@ -1,5 +1,5 @@
 resource "aws_apprunner_service" "service" {
-  service_name = var.candidate_id
+  service_name = "joha062"
   source_configuration {
 
     authentication_configuration {
