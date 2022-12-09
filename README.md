@@ -114,7 +114,7 @@ og
 ## Oppgave 1
 * Den kjører første gangen ettersom bucketen ikke eksisterer - men kjører du github actions 2. gang så vil den feile ettersom den allerede finnes - og i AWS må alle bucket navn være globalt unike - noe den lenger ikke er. 
 Terraform apply gjør basically det den blir fortalt til å gjøre - og du prøver jo å lage en ny bucket med samme navn - og som sagt går ikke dette.
-Men etter utallinge push requests og googling i flere dager fant jeg en fix i workflowen som løste problemet. 
+Men etter utallinge push requests og googling i flere dager fant jeg en fix for å få den til å ikke lage resource om den finnes som løste problemet. 
 
 ## Oppgave 2
 * if: github.ref == 'refs/heads/main' && github.event_name == 'pull' og if: github.ref == 'refs/heads/main' && github.event_name == 'push' må legges til i workflow filen på plan og apply :)
